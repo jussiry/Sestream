@@ -1,0 +1,94 @@
+<div id="notice"></div>
+<div id="temp"></div>
+<div id="ajax_scripts"></div>
+<div id="debug" class="rc10">&nbsp;</div>
+<div id="retweet_confirmation" class="rc10">
+	<a id="retweet_yes" href="#" onclick="retweetYes();stop(event)">Retweet</a>
+	<a id="retweet_quote" href="#" onclick="retweetQuote();stop(event)">Quote</a>
+	<a id="retweet_cancel" href="#" onclick="$('#retweet_confirmation').hide();stop(event)">Cancel</a>
+</div>
+<div id="dummies">
+	<img src="/images/msg_respond_bg_1.png" />
+	<img src="/images/msg_respond_bg_2.png" />
+	<img src="/images/msg_respond_bg_3.png" />
+</div>
+<div id="small_user_info" class="rc10">
+	<div>
+		<span id="sui_name"></span>
+		<span id="sui_percentage"></span>
+	</div>
+	<div>
+		<span id="sui_login"></span>
+		<span id="sui_location"></span>
+	</div>
+	<div id="sui_description"></div>
+	<div id="sui_salience"></div>
+</div>
+
+
+<script type="text/html" id="msg_template">
+	<div id="msg_<#=this.id#>" class="message" status="<#=this.status#>" msg_id="<#=this.id#>" user_login="<#=this.creator_login#>">
+		<div class="msg_left_side">
+			<div class="msg_pic_and_info_container">
+				<a href="/#/user/<#=this.creator_login#>" class="msg_user_pic"
+						onclick="openPage(PAGE_USER, '<#=this.creator_login#>');stop(event);">
+					<img src="<#=this.creator_pic#>" class='rc5' />
+				</a>
+			</div>
+		</div>
+		<div class="msg_content">
+			<div class="msg_text rc10">
+				<img class="msg_text_bg rc10" />
+				<div class="msg_text_text">
+					<#= this.html #>
+				</div>
+			</div>
+			<div class="msg_info" id="msg_info_<#=this.id#>"></div>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+</script>
+
+<script type="text/html" id="hidden_msgs_tmplt">
+	<a href="#" onclick="show_hidden_msgs('<#=this.login#>',4);stop(event);" class="more_msgs_by_user" title="show more messages by <#=this.login#>">
+		<#= this.msgs_left #> more
+	</a>
+</script>
+
+<script type="text/html" id="user_template">
+	<div id="user_info">
+		<div id="profile_image_column">
+			<a href="<#= this.image #>">
+				<img id="profile_image" src="<#= this.image_bigger #>" class="rc10" />
+			</a>
+			<a href="http://twitter.com/<#= this.login #>" id="user_login" target="_blank"><#= this.login #></a>
+		</div>
+		
+		<div id="user_details">
+			<div>
+				<span id='user_name'><#= this.name #></span>
+				<span id="following" class="rc5">Start to follow</span>
+			</div>
+			<div id='description'>
+				<#= this.description #>
+				<span id='location'><#= this.location #></span>
+			</div>
+			&nbsp;
+		</div>
+		
+		<div id="responses">
+			<div id="ups" class="rc5">ups: <strong><#= this.pos #></strong></div>
+			<div id="downs" class="rc5">downs: <strong><#= this.neg #></strong></div>
+			<div id="read" class="rc5">"read": <strong><#= this.read #></strong></div>
+		</div>
+		<div id="response_per" title="Personal recommendation percentage. Multiplier: ">
+			<#= this.percentage #>%
+		</div>
+		
+	</div>
+	<div style="clear: both;"></div>
+	
+	<div><span style="margin:20px 0 5px 0;" class='top_menu_item rc5 tm_selected'>
+		all
+	</span></div>
+</script>

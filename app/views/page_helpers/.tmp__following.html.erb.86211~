@@ -1,0 +1,33 @@
+
+<% return if session[:user_id].nil? %>
+
+<div style="float:left;width:230px;margin-left:30px;">
+	<h3>Users</h3>
+	<% 
+		@t_users = cur_user.user_strengths
+    	@t_users.sort! { |a,b| b.percentage <=> a.percentage }
+	%>
+	<% @t_users.each do |us| %>
+		<li title="pos: <%=us.pos%> neg: <%=us.neg%> read: <%=us.read%>">
+			<a class='user_link' href='/user/<%=us.followed.login%>'><%= us.followed.login %></a>:
+			<%= us.percentage %>%
+		</li>
+	<% end %>
+</div>
+
+
+<div style="float:left;width:230px;margin-left:30px;">
+	<h3>Tags</h3>
+	<%
+		@tags = cur_user.tag_strengths
+    	@tags.sort! { |a,b| b.percentage <=> a.percentage }
+	%>
+	<% @tags.each do |ts| %>
+		<li title="pos: <%=ts.pos%> neg: <%=ts.neg%> read: <%=ts.read%>">
+			<a class='hashtag_link' href='/tag/<%=ts.tag.name%>'><%=ts.tag.name%></a>:
+			<%= ts.percentage %>%
+		</li>
+	<% end %>
+</div>
+
+<br style="clear:both" />

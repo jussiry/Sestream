@@ -1,0 +1,6 @@
+
+<%= render :partial => '/main_page/top_content' %>
+
+<div id="page_content">
+	<%= render :partial => '/user/user_partial' %>
+</div>

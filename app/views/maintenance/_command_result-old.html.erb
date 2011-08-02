@@ -1,0 +1,13 @@
+
+<div class='command_result'>
+	<span class='command'><%= h(params[:command]) %></span>
+	&nbsp; - &nbsp;
+	<span class='time'><%= @time %> s</span>
+	<br/>
+	<% begin %>
+		<%= @result.blank? ? h(@auto_result.inspect) : @result %><br/>
+	<% rescue %>
+		ERROR in html part...
+	<% end %>
+	
+</div>

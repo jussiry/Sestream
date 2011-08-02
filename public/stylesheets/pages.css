@@ -1,0 +1,43 @@
+
+
+
+
+/* USER PAGE
+ * ------------------------------------------------*/
+
+#user_info {
+	font-size: 12px;
+	line-height: 16px;
+	margin-left: 10px;
+}
+
+#profile_image_column {
+	float: left;
+	width: 82px;
+	text-align: center;
+}
+#profile_image_column a { display: block; }
+#user_login { color: #2AADD5; }
+#profile_image { width: width: 82px; }
+
+#user_details, #response_per, #responses { float: left; }
+
+#user_details { width: 46%; margin-left: 2%; }
+#user_name { font-weight: bold; }
+#following {
+	/*float: right;*/
+	margin-left: 6%;
+	background-color: #ccc;
+	padding: 1px 4px;
+}
+#description { margin-top: 3px; }
+#location { font-style: italic; margin-left: 5%; }
+
+#responses { font-size: 10px; width: 15%; margin: 15px 0 0 2%; }
+#ups, #downs, #read { width: 100%; text-align: center; color: white; line-height: 14px; margin: 1px 0; }
+#ups { background-color: #BCE07D; }
+#downs { background-color: #E8AA6D; }
+#read { background-color: #aaaaaa; }
+#response_per { font-size: 26px; margin: 30px 0 0 3%; color: #8CE047; font-weight: bold;}
+
+#follow_or_not { margin: 30px 0 0 20px; }

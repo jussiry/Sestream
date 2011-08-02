@@ -1,0 +1,35 @@
+
+<% if msg.nil? %>
+	<div style="color:red">Message is NIL!</div>
+<% else %>
+	<% creator = msg.creator %>
+	
+	<div id="msg_<%=msg.id%>" class="message" status="<%=status%>" msg_id="<%=msg.id%>">
+		<% if msg.retweeted_by %>
+			<% retweeter = User.find(msg.retweeted_by) %>
+			<a href="/user/<%=retweeter.login%>" class="msg_user_pic" title="@<%=retweeter.login%> retweets from @<%=creator.login%>">
+				<img src='/images/retweet_bg.png' style='position:absolute' />
+				<img src="<%= retweeter.pic_src %>" class='retweeter rc5' />
+				<img src="<%= creator.pic_src %>" class='orig_creator rc5' />
+			</a>
+		<% else %>
+			<%= link_to "<img src=\"#{creator.pic_src}\" class='rc5' />",
+						"/user/#{creator.login}", :class => "msg_user_pic", :title => '@'+creator.login %>
+		<% end %>
+		<div class="msg_content">
+			<%# rf = remote_function :update => 'msg_info_#{msg.id}', :url => { :controller => 'message',
+					:action => 'change_response', :msg_id => msg.id },
+					:complete => "msg_info_loaded(#{msg.id});" %>
+			<div class="msg_text rc10">
+				<img class="msg_text_bg rc10" />
+				<div class="msg_text_text">
+					<%= msg.html %>
+				</div>
+			</div>
+			<div class="msg_info" id="msg_info_<%=msg.id%>"></div>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+	<% @prev_creator = retweeter ? retweeter : creator %>
+	<% @prev_msg = msg %>
+<% end %>

@@ -1,0 +1,26 @@
+
+<style>
+	form { margin-top: 20px; }
+	#command_txt { height: 100px; width: 460px; float: left; font-size: 0.8em; }
+	#submit_eval { height: 40px; float: left; margin: 30px 0 0 3px; }
+	.clear_history {
+		color: green;
+		font-size: 0.8em;
+		margin-bottom: 20px;
+		cursor:pointer; cursor:hand;
+	}
+	.command_result { font-size: 0.8em; margin: 30px 0; }
+	.command { font-size: 1.3em; color: #2AADD5; }
+	.time { color: red; }
+</style>
+
+
+<% form_tag "/eval", :remote => true do %>
+  <%= text_area_tag :command, "", :id => "command_txt", :onclick=>"" %>
+  <%= submit_tag 'eval!', :id => "submit_eval", :onclick => "" %>
+  <div style="clear:both;"></div>
+<% end %>
+
+<div><span class="clear_history" onclick="$('#eval_container').html('')">clear history</span></div>
+
+<div id="eval_container"></div>

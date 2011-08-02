@@ -1,0 +1,17 @@
+
+<div title="time creating: <%= $times[:creating] %>, anal: <%=$times[:analyzing]%>, users: 
+<%=$times[:user].sum%>, hashtags: <%=$times[:hashtag].sum%>"><span style="margin:15px 0 0 0;" class='top_menu_item rc5 tm_selected'>
+	"<%= session[:cs] %>"
+</span></div>
+
+<div style="clear:both; height:0;"></div>
+
+<% if @msgs.empty? %>
+	<div style="margin-top: 20px; font-size: 1.3em; clear: both">No results!</div>
+<% else %>
+	<% @msgs.each do |m_hash| %>
+		<%= render :partial => "/message/message", :locals => { :msg => m_hash[:msg], :status => m_hash[:status] } %>
+	<% end %>
+<% end %>
+
+<script>$('.message','#page_content').each(function(){ init_msg($(this)); });</script>

@@ -1,0 +1,43 @@
+
+
+
+<div id="page_content"></div>
+
+<script type="text/html" id="tmpl">
+    <div>I said <strong><#= this.what #></strong> !!!</div>
+    <![CDATA[  ]]>
+</script>
+
+
+
+
+
+<% json = ActiveSupport::JSON %>
+<script type="text/javascript">
+	all_msgs = <%=json.encode(session[:all_msgs])%>; // $.parseJSON( )
+	//alert(inspect(all_msgs.liked[1].msg.message));
+	
+	$.each(all_msgs, function(ind, mh) {
+		$('#page_content').append( $('#msg_template').jqote(mh, '#') ) ;
+	});
+	
+	//$('#greet').append( $('#msg_template').jqote(all_msgs[1], '#') ) ;
+	//$('#greet').append( $('#msg_template').jqote(all_msgs[2], '#') ) ;
+	
+	$('.message').each( function(){init_msg($(this))} );
+	
+	//$('#greet').html( $('#tmpl').jqote({what: 'Hello World'}, '#') );
+	//$('#greet').html( $('#tmpl').jqote({what: 'plaa World'}) );
+</script>
+
+
+
+
+
+
+<!--script>
+	$.getJSON('/misc/test_json', function(data) {
+ 		alert(data);
+	});
+
+</script-->

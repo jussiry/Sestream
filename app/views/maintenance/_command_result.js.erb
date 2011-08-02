@@ -1,0 +1,13 @@
+
+
+
+var result = $('<div>').addClass('command_result');
+result.append(
+  $('<span>').addClass('command').html("<%= params[:command].to_s.gsub(/\n/, ' ') %>")
+);
+result.append(" &nbsp; - &nbsp; ");
+result.append(
+  $('<span>').addClass('time').html("<%= @time %> s")
+);
+result.append("<br/>"+"<%= @result.blank? ? @auto_result.inspect : @result %>"+"<br/>");
+$('#eval_container').prepend(result);

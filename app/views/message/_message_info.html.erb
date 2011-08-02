@@ -1,0 +1,24 @@
+
+<div class="msg_info_slot" title="message created <%= str=time_ago_text(msg.created_at) %>'s ago. msg_id: <%=msg.id%>">
+	<span><%= str %></span>
+</div>
+
+<div class="msg_info_slot" title="replyes not implemented yet">
+	<img src="/images/comment_icon.png" class="comment_icon" />
+</div>
+
+<div class="msg_info_slot">
+	<% retweets = msg.retweeter_ids.size %>
+	<span title="Total number of retweets">
+		<%= retweets unless retweets == 0
+	%></span><a href="#"
+		onclick="retweet(<%= msg.id %>);stop(event)" title="Retweet to your followers"
+		><img src="/images/retweet_icon.png" class="retweet_icon" />
+	</a>
+</div>
+
+<div class="msg_info_slot" title="interested: <%=msg.pos%>   not interested: <%=msg.neg%>  read: <%=msg.read%>">
+	&nbsp;&nbsp; <img src="/images/arrow_up_down.png" class="up_down_icon" />
+	<div class="pos_neg_num pos_num"><%= msg.pos %></div>
+	<div class="pos_neg_num neg_num"><%= msg.neg %></div>
+</div>

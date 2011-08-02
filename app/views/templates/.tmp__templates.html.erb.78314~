@@ -1,0 +1,39 @@
+<div id="notice"></div>
+<div id="temp"></div>
+<div id="debug" class="rc10"></div>
+<div id="retweet_confirmation" class="rc10">
+	<a id="retweet_yes" href="#" onclick="retweetYes();stop(event)">Retweet</a>
+	<a id="retweet_quote" href="#" onclick="retweetQuote();stop(event)">Quote</a>
+	<a id="retweet_cancel" href="#" onclick="$('#retweet_confirmation').hide();stop(event)">Cancel</a>
+</div>
+<div id="dummies">
+	<img src="/images/msg_respond_bg_1.png" />
+	<img src="/images/msg_respond_bg_2.png" />
+	<img src="/images/msg_respond_bg_3.png" />
+</div>
+
+<script type="text/html" id="msg_template">
+	<div id="msg_<#=this.id#>" class="message" status="<#=this.status#>" msg_id="<#=this.id#>" user_login="<#=this.creator_login#>">
+		<div class="msg_left_side">
+			<a href="/user/<#=this.creator_login#>" class="msg_user_pic" title="@<#=this.creator_login#>">
+				<img src="<#=this.creator_pic#>" class='rc5' />
+			</a>
+		</div>
+		<div class="msg_content">
+			<div class="msg_text rc10">
+				<img class="msg_text_bg rc10" />
+				<div class="msg_text_text">
+					<#= this.html #>
+				</div>
+			</div>
+			<div class="msg_info" id="msg_info_<#=this.id#>"></div>
+		</div>
+		<div style="clear:both"></div>
+	</div>
+</script>
+
+<script type="text/html" id="hidden_msgs_tmplt">
+	<a href="#" onclick="show_hidden_msgs('<#=this.login#>',4);stop(event);" class="more_msgs_by_user" title="show more messages by <#=this.login#>">
+		<#= this.msgs_left #> more
+	</a>
+</script>

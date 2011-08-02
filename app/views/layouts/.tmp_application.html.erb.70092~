@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<title>Tweetjudge (working name)</title>
+		
+		<%= stylesheet_link_tag :all %>
+		<style>
+			<% if cur_user and cur_user.profile_background_image_url %>
+				body { background: url(<%=cur_user.profile_background_image_url%>) repeat fixed; }
+			<% end %>
+		</style>
+		
+		<script src="/javascripts/lib/jquery-1.4.2.min.js" type="text/javascript"></script>
+		<script src="/javascripts/lib/jquery.jqote2.min.js" type="text/javascript"></script>
+		<script src="/javascripts/lib/jquery.color.js" type="text/javascript"></script>
+		<script src="/javascripts/lib/DD_roundies_0.0.2a-min.js" type="text/javascript"></script>
+		<!--script src="/javascripts/ready/webtoolkit.cursor.js" type="text/javascript"></script-->
+		<script src="/javascripts/messages.js" type="text/javascript"></script>
+		<script src="/javascripts/pages.js" type="text/javascript"></script>
+		<%= render :partial => '/templates/js_init' unless params[:controller] == 'maintenance' %>
+		<script src="/javascripts/application.js" type="text/javascript"></script>
+		<script>
+			if (<%= params[:controller] == 'maintenance' or cur_user.nil? %>)
+				current_page = PAGE_NO_JS;
+		</script>
+	</head>
+	<body>
+		<div id="templates">
+			<%= render :partial => '/templates/templates' %>
+		</div>
+		
+		<div id="wrapper" class="rc20">
+			<div id="site_title" class="rc5">
+				Sestream
+				<% if cur_user %>
+					&nbsp;- <%= link_to cur_user.login, "/#/user/#{cur_user.login}",
+									:onclick => "openPage(PAGE_USER,'#{cur_user.login}'); stop(event)", :class => "user_link" %>
+				<% end %>
+			</div>
+			<%= yield %>
+		</div>
+		<div id="debug_link">
+			<%= link_to_remote 'debug', :update => 'debug', :url => { :controller => 'maintenance', :action => 'debug' },
+				:complete => "$('#debug').show()" %>
+		</div>
+	</body>
+</html>

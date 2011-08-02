@@ -1,0 +1,20 @@
+
+<% return if session[:user_id].nil? %>
+
+<div id="messages">
+	<% @msgs[0..60].each do |m| %>
+		<%= render :partial => "/message/message", :locals => {:msg => m[0], :status => m[1] } %>
+	<% end %>
+</div>
+
+<div id="right_panel">
+	<div id="message_info" class="rc15"></div>
+	
+	<div style="font-weight:bold;">
+		<div style="color:#B1E060">green = interesting</div>
+		<div style="color:#E8AA6D">red = not interesting</div>
+		<div style="color:#aaaaaa">gray = read</div>
+	</div>
+</div>
+
+<div style="clear:both;"></div>

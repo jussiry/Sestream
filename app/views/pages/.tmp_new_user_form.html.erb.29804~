@@ -1,0 +1,15 @@
+<div id="info">
+	If you'r following many people on Twitter you'v probably found out that there's lots of clutter between the grains.
+	<strong>Tweetjudge</strong> is a new interface for Twitter designed to solve this problem by allowing you to tell us
+	which tweets you like and which you don't. We then analyze the metadata of these tweets (users, hashtags, etc.),
+	and in the future will order the tweets according to your interests. We also format the tweets so that they are
+	much more pleasant to read, take full use of Twitters reply functionality (not implemented yet),
+	and introduce many other smaller improvements.  
+	<br/><br/>
+	Service is still in early stage of development, but if you don't mind occasional glitches, you'r very welcome to try it out.
+</div>
+
+<a href="/login" id="login_link">
+	<img src="/images/bird_icon_small.jpg" alt="Icon created by Personeelsnet at Flickr." />
+	<span id="login_text">Sign in with Twitter</span>
+</a>

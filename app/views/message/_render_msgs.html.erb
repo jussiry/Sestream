@@ -1,0 +1,22 @@
+
+
+<% @msgs_by_id.each do |m| %>
+   <%= render :partial => "/message/message", :locals => { :msg => m[:msg], :status => m[:status] } %>
+<% end %>
+
+<% if @msgs_left and @msgs_left > 0 %>
+  <%= render :partial => "/message/hidden_messages_link" %>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+	var $msg_container = $('#hid_cont_'+<%=@prev_creator.id%>)
+	//alert($('.message', $msg_container).size())
+	var show_msgs_gt = $('.message', $msg_container).length - <%=@msgs_by_id.size%> - 1
+	var $new_msgs = $('.message'+(show_msgs_gt>0 ? ':gt('+show_msgs_gt+')' : ''), $msg_container);
+	//alert('show_msgs_gt: '+show_msgs_gt+'  $new_msgs: '+$new_msgs);
+	$new_msgs.each(function() {
+		init_msg($(this));
+		$(this).css('opacity',0).animate({opacity:1}, 400);
+	});
+	
+</script>

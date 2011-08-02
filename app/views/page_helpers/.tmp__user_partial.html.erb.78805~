@@ -1,0 +1,44 @@
+
+<div id="user_info">
+	<div id="profile_image_column">
+		<a href="<%= @user.profile_image_url_orig %>">
+			<img id="profile_image" src="<%= @user.profile_image_url_bigger %>" class="rc10" />
+		</a>
+		<%= link_to @user.login, "http://twitter.com/#{@user.login}", :id => "user_login", :target => "_blank" %>
+	</div>
+	
+	<div id="user_details">
+		<div>
+			<%= "<span id='user_name'>#{@user.name}</span>" unless @user.name.nil? %>
+			<span id="following" class="rc5" style="<%= 'background-color: #B1E060' if @usr_str.following %>">
+				<%= @usr_str.following ? "Following" : "Start to follow" %>
+			</span>
+		</div>
+		<% if @user.description %>
+			<div id='description'>
+				<%=@user.description%>
+				<%= "<span id='location'>#{@user.location}</span>" unless @user.location.nil? %>
+			</div>
+		<% end %>
+		&nbsp;
+	</div>
+	
+	<div id="responses">
+		<div id="ups" class="rc5">ups: <strong><%= @usr_str.pos.to_i %></strong></div>
+		<div id="downs" class="rc5">downs: <strong><%= @usr_str.neg.to_i %></strong></div>
+		<div id="read" class="rc5">"read": <strong><%= @usr_str.read.to_i %></strong></div>
+	</div>
+	<%# tot = @usr_str.pos + @usr_str.neg %>
+	<div id="response_per" title="Personal recommendation percentage. Multiplier: <%=@usr_str.multiplier%>">
+		<%= @usr_str.percentage %>%
+	</div>
+	
+</div>
+<div style="clear: both;"></div>
+
+<div><span style="margin:20px 0 5px 0;" class='top_menu_item rc5 tm_selected'>
+	all
+</span></div>
+
+<% @msgs = @all %>
+<%= render :partial => '/main_page/messages' %>

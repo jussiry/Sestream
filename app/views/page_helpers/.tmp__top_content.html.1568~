@@ -1,0 +1,59 @@
+
+
+<div id="menu_container">
+	
+	<%= link_to 'new', { :controller => 'main_page', :action => 'new' }, :id => "new_msgs_link",
+				:class => "top_menu_item rc5", :onclick => "openPage(PAGE_NEW);stop(event);" %>
+	<%= link_to 'liked', { :controller => 'main_page', :action => 'liked' }, :class => "top_menu_item rc5",
+					:onclick => "openPage(PAGE_LIKED);stop(event);" %>
+	<%= link_to 'other', { :controller => 'main_page', :action => 'other' }, :class => "top_menu_item rc5",
+					:onclick => "openPage(PAGE_OTHER);stop(event);" %>
+	<%= link_to 'following', { :controller => 'main_page', :action => 'following' }, :class => "top_menu_item rc5",
+					:onclick => "openPage(PAGE_FOLLOWING);stop(event);" %>
+	<%#= link_to_remote 'following', :update => 'page_content',
+			:url => { :controller => 'main_page', :action => 'following' },
+			:html => { :class => "top_menu_item rc5 #{'tm_selected' if session[:cs] == :following}" },
+			:complete => "showContent()", :loading => "$('#tag_links').hide('slow')" %>
+	
+	<%#= link_to_remote 'new', :update => 'page_content',
+			:url => { :controller => 'main_page', :action => 'messages', :cs => 'new' },
+			:html => { :id => "new_msgs_link", :class => "top_menu_item rc5 #{'tm_selected' if session[:cs] == :new}" },
+			:complete => "showContent()" %>
+	<%#= link_to_remote 'liked', :update => 'page_content',
+			:url => { :controller => 'main_page', :action => 'liked' },
+			:html => { :class => "top_menu_item rc5 #{'tm_selected' if session[:cs] == :liked}" },
+			:onclick => "openPage(PAGE_LIKED);stop(event);" %>
+	<%#= link_to_remote 'other', :update => 'page_content',
+			:url => { :controller => 'main_page', :action => 'other' },
+			:html => { :class => "top_menu_item rc5 #{'tm_selected' if session[:cs] == :other}" },
+			:onclick => "showContent()", :loading => "$('#tag_links').hide('slow')" %>
+	
+	
+	<!-- SEARCH FORM -->
+	<div id="search_box">
+		<% form_remote_tag :url => { :controller => 'main_page', :action => 'search' },
+							:update => 'page_content', :complete => 'showContent()', :html => {:id => 'serach_form'} do %>
+			<%= text_field_tag :search_txt, '', :id => 'search_field', :placeholder => "search" %>
+		<% end %>
+	</div>
+	<div style="clear:both"></div>
+</div>
+
+
+<!-- TAGS - CHANGE TO "SECOND LEVEL MENU" -->
+<div id="tag_links">
+	<%#= render :partial => '/page_helpers/tag_links' %>
+</div>
+	
+
+<div id="new_message">
+	<% form_remote_tag :url => {:controller => "message", :action => "create"},
+			:update => 'notice', :complete => "$('#notice').show();$('#new_msg_textarea').val('')" do %>
+		<%= text_area_tag :message_text, "", :id => "new_msg_textarea", :onclick=>"", :placeholder => " What's happening?" %>
+		<%= submit_tag 'Tweet', :id => "submit_message", :onclick => "" %>
+		<div style="clear:both;"></div>
+	<% end %>
+	<div id="new_message_length_notice">
+		<span id="chars_left">140</span> characters left
+	</div>
+</div>

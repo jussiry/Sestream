@@ -1,0 +1,5 @@
+<%= link_to_remote "#{@msgs_left} more <img class='inline_img' src=#{@prev_creator.pic_src} />",
+	:url => { :controller => 'main_page', :action => 'show_hidden_messages', :creator_id => @prev_creator.id },
+	:update => "hid_cont_#{@prev_creator.id}", :position => 'bottom', :complete => "$('#link_show_hid_#{@prev_creator.id}').remove()",
+	:html => { :id => "link_show_hid_#{@prev_creator.id}", :class => 'more_msgs_by_user',
+	:onclick => "$(this).animate({opacity:0.25})" } %>

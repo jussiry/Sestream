@@ -1,0 +1,17 @@
+<% session[:tag_names][0..25].each do |ta| %>
+	<%= link_to_remote ta[0][1..-1], :update => 'page_content',
+		:url => { :controller => 'main_page', :action => 'messages', :tag => ta[0] },
+		:html => { :class => "tag_menu_item rc5 #{'selected_tag' if ta[0] == session[:cs]}", :title => "#{ta[1]} messages" },
+		:complete => "showContent()" %>
+<% end %>
+<script>
+	$(function() {
+		/*
+		initTopMenu(false, '');
+		$('.tag_menu_item').click(function() {
+			initTopMenu(true, this)
+			$(this).addClass('selected_tag');
+			$('#page_content').animate({ opacity: 0 }, 1500);
+		});*/
+	})
+</script>

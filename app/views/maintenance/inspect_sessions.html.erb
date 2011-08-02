@@ -1,0 +1,31 @@
+
+<%#= @sessions[0].data.inspect %>
+
+<style type="text/css" media="screen">
+	th, td { padding: 8px; border: 1px solid #888; text-align: center; }
+</style>
+
+<% @sessions.sort! { |a,b| b.updated_at <=> a.updated_at } %>
+
+<table>
+	<tr>
+		<th>login</th>
+		<th>msgs updated</th>
+		<th>session updated</th>
+		<th>messages responded</th>
+		<th>referring url</th>
+		<th>ip</th>
+	</tr>
+	<% @sessions.each do |s| %>
+		<% u = s.data[:user_id].nil? ? nil : User.find(s.data[:user_id]) %>
+	    <tr>
+			<td><%= u.login unless u.nil? %></td>
+			<td><%= "#{time_ago_text(s.data[:msgs_updated])}'s ago" unless s.data[:msgs_updated].nil? %></td>
+			<td><%= time_ago_text(s.updated_at) %>'s ago</td>
+			<td><%= u.message_statuses.size unless u.nil? %>
+			<td><%= link_to s.data[:referring_url][7..17], s.data[:referring_url] unless s.data[:referring_url].nil? %></td>
+			<td><%= link_to s.data[:ip], "http://www.ip-adress.com/ip_tracer/#{s.data[:ip]}", 
+						:target => "_blank" unless s.data[:ip].nil? %></td>
+		</tr>
+	<% end %>
+</table>

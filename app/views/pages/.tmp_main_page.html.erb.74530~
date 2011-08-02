@@ -1,0 +1,6 @@
+
+<%= render :partial => '/page_helpers/top_content' %>
+
+<div id="page_content">
+	
+</div>

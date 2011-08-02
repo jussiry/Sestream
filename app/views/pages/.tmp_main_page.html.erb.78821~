@@ -1,0 +1,24 @@
+
+<%= render :partial => '/page_helpers/top_content' %>
+
+<div id="page_content">
+	<% if session[:all_msgs].blank? %>
+		<p>Welcome to Sestream! We are initializing suff on the background; once everything is ready,
+		the "new" link above will turn yeallow and show ammount of new tweets.</p>
+		
+		<h3>How Sestream works?</h3>
+		
+		<p>Sestream helps you to find the messages that are most relevant to you by learning what you like and what
+		you don't like. You can respond to messages you find interesting by clicking their right side (the
+		<span style="color: #BCE07D">green button</span> that appears), and to messages you don't find interesting
+		by clicking their left ride (the <span style="color: #E8AA6D">red button</span>). In the future, we will
+		show messages from users you like higher in the sream, and users you don't like lower in the stream.</p>
+		
+		<p>If you have no opinion on a tweet, you can just click it from the center (gray button) and we will
+		hide it in the future from the "new" messages. You can find the tweets you have liked in the past under
+		the "liked" tab, and the rest of the responded tweets under the "other" tab.</p>
+		
+		<p>Has the "new" link above turned yeallow? If it has, just click it to get started!</p>
+		
+	<% end %>
+</div>

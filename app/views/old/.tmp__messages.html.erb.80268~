@@ -1,0 +1,54 @@
+
+<% return if session[:user_id].nil? %>
+
+<% if @error %>
+	<div style="color:red;"><%= @error %></div>
+<% end %>
+
+<% if @msgs.nil? %>
+	<% @msgs = session[:msgs][session[:cs]] %>
+	<% if @msgs.blank? %>
+		<%# Tää ei toimi! returnin jälkeen ei näytetä mitään? %>
+		<% render :text => "<p>No messages to show...</p>" %>
+		<p>No messages to show...</p>
+		<% return %>
+	<% end %>
+<% else %>
+	<script>
+		$.ajax({
+			data: 'authenticity_token=' + encodeURIComponent(authenticityToken),
+			success: function(request){$('#tag_links').html(request);},
+			type: 'post', url:'/main_page/tag_links'
+		});
+	</script>
+<% end %>
+
+<% if @new_messages %>
+  <p title="time creating: <%= $times[:creating] %>, anal: <%=$times[:analyzing]%>, users: 
+	<%=$times[:user].sum%>, hashtags: <%=$times[:hashtag].sum%>"
+	style="font-size:0.8em;font-weight:bold;"><%=@new_messages%> new messages
+  </p>
+<% end %>
+
+<% @msgs[0..-1].each do |m| %>
+	<% if m.class == Array %>
+	    <div class="hidden_message_container" id="hid_cont_<%=@prev_creator.id%>">
+	    	<% @msgs_left = m.size %>
+	    	<%= render :partial => "/message/hidden_messages_link" %>
+		</div>
+	<% else %>
+		<%= render :partial => "/message/message", :locals => { :msg => m[:msg], :status => m[:status] } %>
+	<% end %>
+<% end %>
+
+<script>$('.message','#page_content').each(function(){ init_msg($(this)); });</script>
+
+<!--div id="right_panel">
+	<div id="message_info" class="rc15"></div>
+	
+	<div style="font-weight:bold;">
+		<div style="color:#B1E060">green = interesting</div>
+		<div style="color:#E8AA6D">red = not interesting</div>
+		<div style="color:#aaaaaa">gray = read</div>
+	</div>
+</div-->

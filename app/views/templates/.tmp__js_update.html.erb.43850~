@@ -1,0 +1,7 @@
+
+<script type="text/javascript" charset="utf-8">
+	new_msgs = <%= @msgs.to_json %>;
+	new_msgs_ammount = <%= @new_messages ? @new_messages : -1 %>;
+	user_data = <%= session[:users].to_json %>;
+	msgs_updated_time = new Date('<%=session[:msgs_updated]%>');
+</script>

@@ -1,0 +1,13 @@
+
+<script type="text/javascript" charset="utf-8">
+	authenticityToken = '<%=form_authenticity_token%>';
+	all_msgs = <%= session[:all_msgs].to_json %>;
+	user_data = <%= session[:users].to_json %>;
+	<% if session[:msgs_updated] %>
+		msgs_updated_time = new Date('<%=session[:msgs_updated]%>')
+	<% else %>
+		msgs_updated_time = new Date(0) // 1970/01/01
+	<% end %>
+	
+	//all_msgs = <%#= ActiveSupport::JSON.encode(session[:all_msgs]) %>;
+</script>

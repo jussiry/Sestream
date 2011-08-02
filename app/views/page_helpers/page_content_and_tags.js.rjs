@@ -1,0 +1,9 @@
+
+
+# EI KÄYTÖSSÄ. EI TOIMINUT...
+
+page.insert_html :top, 'tag_links', :partial => 'main_page/tag_links'
+
+page.insert_html :top, 'page_content', :partial => '/main_page/messages'
+
+

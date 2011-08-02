@@ -1,0 +1,14 @@
+
+<%= link_to_function 'X', "$('#notice').hide()", :style => "float:right" %>
+
+<div>
+	<% if msg %>
+		<h3>Message created:</h3>
+		<%= render :partial => "/message/message", :locals => {:msg => msg, :msg_ind => nil, :status => 0 }%>
+		<% if @dont_have_tag %>
+		  <p>ps. It's recommended to use #hashtag(s) in your tweets, since it helps to categorize the message and increases its saliency.</p>
+		<% end %>
+	<% else %>
+		<p><%= text %></p>
+	<% end %>
+</div>

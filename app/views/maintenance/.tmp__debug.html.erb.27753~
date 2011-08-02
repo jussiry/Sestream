@@ -1,0 +1,18 @@
+
+<%= link_to_function 'X', "$('#debug').hide()", :style => "float:right" %>
+
+<h3>Debug</h3>
+
+messages: <%= session[:number_of_messages] %>
+<br/><br/>
+<strong>Timer: </strong> <%= session[:timer] %>
+<br/><br/>
+cs: <%= session[:cs] %>
+<br/><br/>
+<!--strong><%= session[:change_response_time] %></strong>
+<br/><br/-->
+<strong>all_msgs</strong>: <%= h session[:all_msgs].inspect %>
+<br/><br/>
+<strong>session[:msgs_updated]</strong>: <%= session[:msgs_updated].inspect %>
+<br/><br/>
+<strong>SESSION:</strong> no session, thank you <%#= session.inspect %>

@@ -1,0 +1,13 @@
+
+<script type="text/javascript" charset="utf-8">
+	//alert('js_update')
+	new_msgs = new_msgs.concat(<%= raw @msgs.to_json %>);
+	//new_msgs_ammount += <%= @new_messages ? @new_messages : 0 %>;  
+	
+	user_data = <%= raw session[:users].to_json %>;
+	msgs_updated_time = new Date('<%=session[:msgs_updated]%>');
+	
+	var title = 'Sestream';
+	if (new_msgs.length > 0) title += ' (' + new_msgs.length + ')'; 
+	$('head title').html(title);
+</script>
