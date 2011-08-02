@@ -7,10 +7,10 @@ class MaintenanceController < ApplicationController
     render :partial => '/maintenance/debug'
   end
   
-  def picture
-    pic = Picture.find(params[:id])
-    send_data(pic.picture_data, :filename => "t_user_pic", :type => pic.picture_type, :disposition => "inline" )
-  end
+  #def picture
+  #  pic = Picture.find(params[:id])
+  #  send_data(pic.picture_data, :filename => "t_user_pic", :type => pic.picture_type, :disposition => "inline" )
+  #end
   
   def test
     #render :text => TwitterAuth::Dispatcher::Basic.get("/search?q=#{CGI.escape("school")}").inspect

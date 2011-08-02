@@ -67,7 +67,8 @@ class UserController < ApplicationController
     logger.debug @all.inspect
   end
   
-  
+
+=begin
   
   def init_user__old
     
@@ -173,6 +174,8 @@ class UserController < ApplicationController
     #  plaa << "- #{p.elements["description"].text} \n"
     #end
   end
+  
+=end
   
 #  def logout
 #    reset_session

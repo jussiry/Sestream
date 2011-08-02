@@ -1,3 +1,6 @@
+=begin
+# Pictures not used
+
 require 'mini_magick' # for picture_modification
 
 class Picture < ActiveRecord::Base
@@ -50,4 +53,6 @@ class Picture < ActiveRecord::Base
     end
   end
   
-end
+end 
+ 
+=end

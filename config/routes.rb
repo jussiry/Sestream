@@ -62,8 +62,7 @@ Tweets::Application.routes.draw do
   match '/eval' => "maintenance#evaluate"
   match '/test' => "maintenance#test"
   
-  #map.picture 'picture/:id.:format', :controller => 'misc', :action => 'picture'
-  match '/picture(/:id)' => "misc#picture"
+  #match '/picture(/:id)' => "misc#picture"
   
   #match "/oauth_callback" => "user#init_user"
   

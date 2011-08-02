@@ -15,7 +15,7 @@ class User < GenericUser  #TwitterAuth::
   has_many :msg_users
   has_many :messages_mention, :through => :msg_users, :source => :message
   
-  belongs_to :picture
+  #belongs_to :picture #pictures not used anymore
   
   #belongs_to :twitter_user
   

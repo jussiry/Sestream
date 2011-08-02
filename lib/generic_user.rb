@@ -46,14 +46,14 @@ class GenericUser < ActiveRecord::Base
     user.login = hash['screen_name'] # ensure right case (if originally created from mention in a tweet)
     user.twitter_id = hash['id'].to_s
     
-    if user.picture_id.nil? and create_pic
-      begin
-        pic = Picture.from_url(hash['profile_image_url'].to_s)
-        user.update_attribute(:picture_id, pic.id)
-      rescue
-        logger.debug "FAILED TO CREATE IMAGE.. #{hash['screen_name']}   #{hash['profile_image_url']}"
-      end
-    end
+    #if user.picture_id.nil? and create_pic
+    #  begin
+    #    pic = Picture.from_url(hash['profile_image_url'].to_s)
+    #    user.update_attribute(:picture_id, pic.id)
+    #  rescue
+    #    logger.debug "FAILED TO CREATE IMAGE.. #{hash['screen_name']}   #{hash['profile_image_url']}"
+    #  end
+    #end
     
     TWITTER_ATTRIBUTES.each do |att|
       user.send("#{att}=", hash[att.to_s]) if user.respond_to?("#{att}=")
