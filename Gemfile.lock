@@ -76,6 +76,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  rails
+  rails (= 3.0.9)
   sqlite3-ruby
   twitter-auth
